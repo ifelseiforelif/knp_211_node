@@ -74,11 +74,11 @@ import "dotenv/config";
 //   .then((data) => console.log(data))
 //   .catch((e) => console.log(e));
 
-fetch(`${process.env.HOST}users`, {
-  method: "POST",
-  body: JSON.stringify({
-    name: "Ruslan",
-  }),
-})
-  .then((res) => console.log(res))
-  .catch((e) => console.log(e));
+// fetch(`${process.env.HOST}users`, {
+//   method: "POST",
+//   body: JSON.stringify({
+//     name: "Ruslan",
+//   }),
+// })
+//   .then((res) => console.log(res))
+//   .catch((e) => console.log(e));
