@@ -1,5 +1,5 @@
-// const arr = [3, 4.5, "hello", { id: 1, name: "Alex" }, [3, 4, 4]];
-// console.log(arr[3]);
+const arr = [3, 4.5, "hello", { id: 1, name: "Alex" }, [3, 4, 4]];
+console.log(arr[3]);
 // import { log } from "node:console";
 // import fs from "node:fs";
 // const content = fs.readFileSync("data.txt");
