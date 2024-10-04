@@ -23,4 +23,8 @@ userRoutes.get("/logout", (req, res) => {
   res.redirect("/");
 });
 
+userRoutes.get("/list", (req, res) => {
+  res.render("user_list", { users });
+});
+
 export default userRoutes;

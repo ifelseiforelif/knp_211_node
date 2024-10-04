@@ -21,7 +21,8 @@ app.use(
   session({
     secret: process.env.SESSION_KEY,
     resave: false,
-    saveUninitialized: true,
+    saveUninitialized: false, //створення сессії без даних
+    cookie: { maxAge: 1000 * 60 * 60 },
   })
 );
 app.use(checkUser);
