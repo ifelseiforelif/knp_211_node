@@ -16,6 +16,7 @@ const hbs = exphbs.create({
 //#endregion
 
 const app = express();
+app.use(express.static("photos"));
 app.use(cookieParser());
 app.use(
   session({
