@@ -1,5 +1,9 @@
 import { Router } from "express";
-import { authUser, createUser } from "../middlewares/user-middleware.js";
+import {
+  authUser,
+  createUser,
+  feedbackUser,
+} from "../middlewares/user-middleware.js";
 import { users } from "../data/users.js";
 import path from "node:path";
 import multer from "multer";
@@ -13,6 +17,8 @@ const storage = multer.diskStorage({
 const configMulter = multer({ storage: storage });
 
 const userRoutes = Router();
+
+
 
 userRoutes
   .route("/signup")
@@ -46,5 +52,14 @@ userRoutes.get("/logout", (req, res) => {
 userRoutes.get("/list", (req, res) => {
   res.render("user_list", { users });
 });
+
+userRoutes
+  .route("/feedback")
+  .get((req, res) => {
+    res.render("form_feedback");
+  })
+  .post(feedbackUser, (req, res) => {
+    res.status(400).redirect("/");
+  });
 
 export default userRoutes;
