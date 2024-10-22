@@ -1,11 +1,4 @@
 import { Router } from "express";
-import { books } from "../models/books.js";
-const bookRoutes = Router();
-bookRoutes.get("/", (req, res) => {
-    res.json(books);
-});
-bookRoutes.post("/", (req, res) => {
-    books.push(req.body);
-    res.status(201).send(); //created
-});
-export default bookRoutes;
+import { BookController } from "../controllers/book-controller.js";
+export const bookRoutes = Router();
+bookRoutes.route("/").post(BookController.create).get(BookController.readAll);

@@ -6,9 +6,5 @@ POST  https://127.0.0.1/books HTTP/1.1
 content-type: application/json
 
 {
-    "id":33,
-    "title":"book33",
-    "author":"author33",
-    "pages":987,
-    "year":2020
+    "title":"test222"
 }
