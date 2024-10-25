@@ -2,9 +2,10 @@ import express from "express";
 import fs from "node:fs";
 import path from "node:path";
 import https from "node:https";
+import "dotenv/config";
 import { bookRoutes } from "./routes/book-routes.js";
 import { connection } from "./config/config.js";
-const PORT = 443;
+const PORT = process.env.PORT;
 const __dirname = import.meta.dirname;
 connection
     .sync()
