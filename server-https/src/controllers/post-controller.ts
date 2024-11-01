@@ -6,7 +6,7 @@ export class PostController {
     req: Request<
       {},
       {},
-      { title: string; description: string; user_id: number }
+      { title: string; description: string; user_id: string }
     >,
     res: Response
   ): Promise<any> {

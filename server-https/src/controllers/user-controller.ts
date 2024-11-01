@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import { User } from "../models/user-model.js";
 import { Post } from "../models/post-model.js";
+import { Profile } from "../models/profile-model.js";
 
 export class UserController {
   static async create(
@@ -17,7 +18,7 @@ export class UserController {
   }
 
   static async readAll(req: Request, res: Response): Promise<any> {
-    const users = await User.findAll({ include: Post });
+    const users = await User.findAll({ include: [Post, Profile] });
     if (users) {
       return res.status(200).json({ message: "List of users", data: users });
     }

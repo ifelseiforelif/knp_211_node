@@ -34,9 +34,9 @@ export class Post extends Model {
 
   @ForeignKey(() => User)
   @Column({
-    type: DataType.INTEGER,
+    type: DataType.UUID,
   })
-  user_id!: number;
+  user_id!: string;
 
   @BelongsTo(() => User)
   user!: User;

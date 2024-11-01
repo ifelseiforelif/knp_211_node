@@ -1,5 +1,7 @@
-import { Table, Model, Column, DataType, HasMany } from "sequelize-typescript";
+import { Table, Model, Column, DataType, HasMany, HasOne } from "sequelize-typescript";
 import { Post } from "./post-model.js";
+import { v4 as uuidv4 } from "uuid";
+import { Profile } from "./profile-model.js";
 
 enum UserRole {
   ADMIN = "admin",
@@ -15,11 +17,11 @@ enum UserRole {
 })
 export class User extends Model {
   @Column({
-    type: DataType.INTEGER,
-    autoIncrement: true,
+    type: DataType.UUID,
+    defaultValue: uuidv4(),
     primaryKey: true,
   })
-  id!: number;
+  id!: string;
 
   @Column({
     type: DataType.STRING(30),
@@ -37,4 +39,7 @@ export class User extends Model {
 
   @HasMany(() => Post)
   posts!: Post[];
+
+  @HasOne(() => Profile)
+  profile!: Profile;
 }

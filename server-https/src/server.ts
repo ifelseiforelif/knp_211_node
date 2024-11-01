@@ -7,12 +7,13 @@ import { bookRoutes } from "./routes/book-routes.js";
 import { connection } from "./config/config.js";
 import { userRoutes } from "./routes/user-routes.js";
 import { postRoutes } from "./routes/post-routes.js";
+import { profileRoutes } from "./routes/profile-routes.js";
 
 const PORT = process.env.PORT;
 const __dirname = import.meta.dirname;
 
 connection
-  .sync({ alter: true })
+  .sync({ force: true })
   .then(() => {
     const app = express();
     const options = {
@@ -28,6 +29,7 @@ connection
     app.use("/books", bookRoutes);
     app.use("/users", userRoutes);
     app.use("/posts", postRoutes);
+    app.use("/profiles", profileRoutes);
   })
   .catch((err) => {
     console.error(err);
