@@ -6,8 +6,8 @@ POST  https://127.0.0.1/users HTTP/1.1
 content-type: application/json
 
 {
-    "login":"vlad",
-    "role":"admin"
+    "login":"alex",
+    "role":"user"
 }
 
 ### 

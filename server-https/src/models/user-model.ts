@@ -1,4 +1,11 @@
-import { Table, Model, Column, DataType, HasMany, HasOne } from "sequelize-typescript";
+import {
+  Table,
+  Model,
+  Column,
+  DataType,
+  HasMany,
+  HasOne,
+} from "sequelize-typescript";
 import { Post } from "./post-model.js";
 import { v4 as uuidv4 } from "uuid";
 import { Profile } from "./profile-model.js";
@@ -14,6 +21,17 @@ enum UserRole {
   timestamps: true,
   createdAt: "created_at",
   updatedAt: "updated_at",
+  scopes: {
+    adminUsers: {
+      where: { role: UserRole.ADMIN },
+    },
+    guestUsers: {
+      where: { role: UserRole.GUEST },
+    },
+    userUsers: {
+      where: { role: UserRole.USER },
+    },
+  },
 })
 export class User extends Model {
   @Column({

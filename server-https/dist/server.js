@@ -8,11 +8,14 @@ import { connection } from "./config/config.js";
 import { userRoutes } from "./routes/user-routes.js";
 import { postRoutes } from "./routes/post-routes.js";
 import { profileRoutes } from "./routes/profile-routes.js";
+import { clientRedis } from "./config/redis-config.js";
 const PORT = process.env.PORT;
 const __dirname = import.meta.dirname;
-connection
-    .sync({ force: true })
-    .then(() => {
+const run = async () => {
+    await connection.sync();
+    console.log("DB connection successfully");
+    await clientRedis.connect();
+    console.log("Redis connection successfully");
     const app = express();
     const options = {
         key: fs.readFileSync(path.join(__dirname, "..", "cert", "key.pem")),
@@ -26,7 +29,10 @@ connection
     app.use("/users", userRoutes);
     app.use("/posts", postRoutes);
     app.use("/profiles", profileRoutes);
-})
-    .catch((err) => {
+};
+try {
+    run();
+}
+catch (err) {
     console.error(err);
-});
+}
