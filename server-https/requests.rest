@@ -1,0 +1,43 @@
+GET https://127.0.0.1/users HTTP/1.1
+
+###
+
+POST  https://127.0.0.1/users HTTP/1.1
+content-type: application/json
+
+{
+    "login":"alex",
+    "role":"user"
+}
+
+### 
+
+POST  https://127.0.0.1/posts HTTP/1.1
+content-type: application/json
+
+{
+    "title":"Post# 3",
+    "description":"Description Post #3",
+    "user_id" : "5ef199ad-a8d3-4919-8a20-649cc6130ad4"
+}
+
+###
+
+
+GET https://127.0.0.1/posts HTTP/1.1
+
+### 
+
+POST  https://127.0.0.1/profiles HTTP/1.1
+content-type: application/json
+
+{
+    "city":"Kyiv",
+    "detail_info":"Detail info about User",
+    "user_id" : "67c637dd-62dd-4edf-9eae-e8e30337d4fe"
+}
+
+###
+
+
+GET https://127.0.0.1/profiles HTTP/1.1
